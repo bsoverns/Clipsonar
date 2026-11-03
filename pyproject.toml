@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clipsonar"
+description = "Find a person across large photo and video libraries using sample images, then build montages and playlists. Runs locally."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = { file = "LICENSE" }
+authors = [{ name = "bsoverns" }]
+dynamic = ["version"]
+dependencies = [
+    "insightface==0.7.3",
+    "ml_dtypes>=0.5.0",
+    "numpy>=2.0,<3",
+    "opencv-python-headless>=4.10.0",
+    "PySide6-Essentials>=6.7",
+]
+
+[project.optional-dependencies]
+cpu = ["onnxruntime>=1.19.0"]
+gpu = ["onnxruntime-gpu[cuda,cudnn]>=1.21.0"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+clipsonar = "clipsonar.cli:main"
+
+[project.gui-scripts]
+clipsonar-gui = "clipsonar.gui:main"
+
+[project.urls]
+Homepage = "https://github.com/bsoverns/Clipsonar"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = { attr = "clipsonar.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["model: needs the InsightFace model (downloads about 300 MB on first use)"]
+
+[tool.ruff]
+line-length = 120
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["clipsonar"]
+known-local-folder = ["conftest"]

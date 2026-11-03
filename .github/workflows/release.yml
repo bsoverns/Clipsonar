@@ -1,0 +1,35 @@
+name: Release
+
+# Pushing a version tag builds the Windows app and publishes it as a GitHub Release:
+#   git tag v0.1.0
+#   git push origin v0.1.0
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Clipsonar and build tools
+        run: python -m pip install ".[cpu]" pyinstaller pip-licenses
+
+      - name: Build
+        shell: pwsh
+        run: .\scripts\build_exe.ps1
+
+      - name: Publish the release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create $env:GITHUB_REF_NAME dist\Clipsonar-windows-cpu.zip --title $env:GITHUB_REF_NAME --generate-notes

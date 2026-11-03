@@ -216,3 +216,41 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---- Clipsonar: keep personal media and scan results out of this repository ----
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.webp
+*.gif
+*.tif
+*.tiff
+*.heic
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.m4v
+*.wmv
+*.webm
+*.mts
+*.m2ts
+*.3gp
+*.mpg
+*.mpeg
+*.flv
+*.m3u
+*.csv
+*.db
+*.modd
+*.onnx
+state.json
+scan_meta.json
+order.json
+batch_state.json
+.claude/
+models/
+
+# A UI screenshot with placeholder paths and no people.
+!docs/screenshot.png

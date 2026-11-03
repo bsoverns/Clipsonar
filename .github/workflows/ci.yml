@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for personal media and scan results
+        run: python scripts/check_repo.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install FFmpeg
+        run: choco install ffmpeg -y --no-progress
+
+      - name: Install Clipsonar
+        run: python -m pip install -e ".[cpu,dev]"
+
+      - name: Lint
+        run: python -m ruff check .
+
+      # Tests that need the real face model skip themselves because it isn't downloaded here.
+      - name: Test
+        run: python -m pytest -v
