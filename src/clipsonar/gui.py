@@ -41,8 +41,8 @@ from .common import Cancelled, JobError, PhotoLayout, Reporter, VideoLayout
 from .faces import DEFAULT_THRESHOLD
 
 ABOUT_TEXT = (
-    f"<b>Clipsonar {__version__}</b><br>Finds a person across photo and video folders. "
-    "Everything runs on this computer, and nothing is uploaded.<br><br>"
+    f"<b>Clipsonar {__version__}</b><br>Creates slideshows of one person from your images and videos. "
+    "Everything runs on this computer, and your media is never uploaded.<br><br>"
     "Clipsonar's code is under the MIT License.<br><br>"
     "<b>The face model is not.</b> The InsightFace <i>buffalo_l</i> model, downloaded on first use, is licensed "
     "for non-commercial research only. Contact InsightFace for any other use.<br><br>"
