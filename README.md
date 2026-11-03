@@ -1,6 +1,8 @@
 # Clipsonar
 
-Find one person across a large photo and video library, using a few sample images. Clipsonar copies the matching photos, cuts short clips from the matching videos, and builds montages with a playlist you can open in VLC.
+Create slideshows of one person from your images and videos. Give Clipsonar a few sample images, and it searches your library, copies the matching photos, and cuts short clips from the matching videos. It then turns them into MP4 slideshows with a playlist you can open in VLC.
+
+Photos and video clips are built separately, so you get one slideshow for each.
 
 Everything runs on your own computer, and your media is never uploaded. The only download is the face model, the first time you scan.
 
@@ -11,7 +13,7 @@ Everything runs on your own computer, and your media is never uploaded. The only
 - **Desktop app:** pick your sample images, the folders to search, and a destination.
 - **Photos:** searches subfolders and copies matches, with the match score in each file name. Your originals are only read.
 - **Videos:** samples frames and cuts a clip around each appearance.
-- **Montages and playlists:** builds batched MP4s and an `.m3u` playlist that plays them back to back. Clips from different cameras are converted to one format first.
+- **Slideshows and playlists:** builds batched MP4s and an `.m3u` playlist that plays them back to back. Clips from different cameras are converted to one format first.
 - **Built for big libraries and network drives:** stop at any time and the next run resumes where it left off.
 - **Review tools:** a labeled video for spotting false matches, a low-score filter, and a check for corrupt photos.
 - **GPU support:** with the source install, tick **Use NVIDIA GPU if available** for much faster scans. Otherwise it runs on the CPU.
